@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>수학 과제 확인</title>
+<style>
+body {
+  font-family: sans-serif;
+  padding: 25px;
+  background: #f5f6fa;
+}
+.box {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+}
+input { padding: 12px; font-size: 17px; }
+button {
+  padding: 13px;
+  margin-top: 20px;
+  background: #4169e1;
+  color: white;
+  border: 0;
+  border-radius: 8px;
+  font-size: 16px;
+}
+</style>
+</head>
+<body>
+<div class="box">
+<h2>수학 과제 확인</h2>
+<p>학생 이름</p>
+<input id="name" placeholder="학생 이름 입력">
+<p>
+<label>
+<input type="checkbox" id="done">
+과제 확인 완료
+</label>
+</p>
+<button onclick="copyReport()">어머님께 보낼 문자 복사</button>
+</div>
+<script>
+function copyReport() {
+ const name = document.getElementById('name').value;
+ const done = document.getElementById('done').checked;
+ const message = name + " 학생 수학 과제 확인\n" +
+ (done ? "과제를 확인했습니다." : "과제 확인이 필요합니다.");
+ navigator.clipboard.writeText(message)
+ .then(() => alert("문자가 복사되었습니다."));
+}
+</script>
+</body>
+</html>
